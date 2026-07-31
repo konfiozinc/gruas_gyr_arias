@@ -41,110 +41,116 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 8px;
+            padding: 10px;
         }
 
-        /* Chasis Móvil Flexible y Adaptativo (Evita cortes de pie de página) */
+        /* Chasis Fijo Móvil con Tamaño Completo Original y Scroll Suave Integrado */
         .card-container {
             width: 100%;
             max-width: 380px;
+            height: 100vh;
+            max-height: 780px;
             background: var(--surface-card);
-            border-radius: 24px;
+            border-radius: 28px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(30, 136, 181, 0.15);
-            padding: 14px 12px;
-            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(30, 136, 181, 0.2);
+            overflow: hidden;
+            position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        .scroll-content {
+        /* Contenedor con Scroll para todo el contenido interior, garantizando visibilidad del pie de página */
+        .card-scroll-wrapper {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100%;
         }
+        .card-scroll-wrapper::-webkit-scrollbar { width: 4px; }
+        .card-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(30, 136, 181, 0.4); border-radius: 4px; }
 
-        /* Contenedor del Logotipo Compacto */
+        /* Contenedor del Logotipo Grande y Elegante */
         .logo-container {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto 4px;
+            width: 95px;
+            height: 95px;
+            margin: 0 auto 10px;
             background: #FFFFFF;
             border-radius: 50%;
-            padding: 4px;
+            padding: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 3px solid var(--gruas-red);
-            box-shadow: 0 0 12px rgba(229, 46, 46, 0.4);
+            box-shadow: 0 0 18px rgba(229, 46, 46, 0.5);
             flex-shrink: 0;
             color: var(--gruas-blue);
-            font-size: 28px;
+            font-size: 38px;
         }
 
         .brand-title {
-            font-size: 18px;
+            font-size: 21px;
             font-weight: 700;
             color: var(--text-primary);
             letter-spacing: 0.5px;
         }
 
         .brand-subtitle {
-            font-size: 10.5px;
+            font-size: 11.5px;
             color: var(--gruas-blue);
             font-weight: 600;
-            margin-top: 1px;
+            margin-top: 2px;
             text-transform: uppercase;
         }
 
         .brand-tagline {
-            font-size: 9px;
+            font-size: 10px;
             color: var(--text-secondary);
-            margin-top: 2px;
-            margin-bottom: 6px;
-            line-height: 1.2;
-            max-width: 310px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            max-width: 320px;
         }
 
         .location-badge {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             background: rgba(30, 136, 181, 0.12);
             border: 1px solid rgba(30, 136, 181, 0.3);
             color: #38BDF8;
-            padding: 2px 8px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 9.5px;
+            font-size: 11px;
             font-weight: 500;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
 
-        /* Botones Principales de Acción Compactos y Fluidos */
+        /* Botones Principales de Acción Originales y Grandes */
         .action-grid {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 10px;
             width: 100%;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
 
         .btn-official {
             width: 100%;
-            padding: 9px 12px;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border-radius: 14px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 11.5px;
+            font-size: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             color: #FFFFFF;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
             border: none;
             cursor: pointer;
         }
@@ -153,8 +159,8 @@
         .btn-whatsapp:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
         @keyframes pulseWhatsApp {
-            0%, 100% { box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3); }
-            50% { box-shadow: 0 3px 16px rgba(37, 211, 102, 0.6); }
+            0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
+            50% { box-shadow: 0 4px 22px rgba(37, 211, 102, 0.6); }
         }
 
         .btn-phone { background-color: var(--brand-phone); }
@@ -163,55 +169,56 @@
         .btn-vcard { background-color: #334155; }
         .btn-vcard:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
-        /* Secciones de Servicios Reducidas */
+        /* Servicios Destacados Originales */
         .features-list {
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 8px;
             text-align: left;
             width: 100%;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
         }
 
         .feature-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-subtle);
-            border-left: 3px solid var(--gruas-blue);
-            border-radius: 7px;
-            padding: 5px 8px;
+            border-left: 4px solid var(--gruas-blue);
+            border-radius: 10px;
+            padding: 10px 12px;
         }
 
         .feature-card h4 {
-            font-size: 10.5px;
+            font-size: 12px;
             color: var(--text-primary);
-            margin-bottom: 1px;
+            margin-bottom: 2px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
         .feature-card p {
-            font-size: 9px;
+            font-size: 10.5px;
             color: var(--text-secondary);
-            line-height: 1.25;
+            line-height: 1.4;
         }
 
-        /* Contenedor del QR en Grande Abajo Optimizada */
+        /* Código QR en Grande Abajo con su contenedor original */
         .qr-section {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 6px 10px;
+            border-radius: 16px;
+            padding: 12px;
             width: 100%;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 14px;
+            margin-bottom: 10px;
         }
 
         .qr-wrapper {
             background: #FFFFFF;
-            padding: 4px;
-            border-radius: 6px;
+            padding: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -223,45 +230,43 @@
         }
 
         .qr-info h5 {
-            font-size: 10.5px;
+            font-size: 12px;
             color: var(--text-primary);
             font-weight: 700;
         }
 
         .qr-info p {
-            font-size: 8.5px;
+            font-size: 10px;
             color: var(--text-secondary);
-            line-height: 1.2;
-            margin-top: 1px;
+            line-height: 1.3;
+            margin-top: 3px;
         }
 
-        /* Footer y Créditos Konfío Zinc obligatorios (Garantizado a la vista) */
-        .footer-container {
-            margin-top: 8px;
-            padding-top: 6px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        /* Pie de Marca Fijo y Visible Garantizado (Konfío Zinc) */
+        .brand-footer {
+            background: #080C14;
+            color: rgba(148, 163, 184, 0.8);
+            font-size: 8.5px;
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            border-top: 1px solid var(--border-subtle);
+            text-transform: uppercase;
             flex-shrink: 0;
             width: 100%;
         }
 
-        .konfio-footer {
-            font-size: 7.5px;
-            color: rgba(148, 163, 184, 0.7);
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            font-weight: 700;
-        }
-
         .toast {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(20px);
             background: var(--gruas-blue);
             color: #fff;
-            padding: 6px 16px;
+            padding: 8px 20px;
             border-radius: 999px;
-            font-size: 11px;
+            font-size: 12px;
             opacity: 0;
             pointer-events: none;
             transition: all 0.3s ease;
@@ -274,7 +279,8 @@
 
     <div class="card-container">
         
-        <div class="scroll-content">
+        <!-- Wrapper con Scroll Suave para preservar tamaño grande e imponente -->
+        <div class="card-scroll-wrapper">
             <!-- Icono / Logotipo Representativo -->
             <div class="logo-container">
                 <i class="fa-solid fa-truck-pickup" style="color: var(--gruas-blue);"></i>
@@ -292,7 +298,7 @@
             <!-- Botones de Acción Principal -->
             <div class="action-grid">
                 <a href="https://wa.me/573122438916?text=Hola%20Rubén,%20necesito%20el%20servicio%20urgente%20de%20grúa%20planchón%20en%20Cali." class="btn-official btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Pedir Grúa por WhatsApp
+                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Pedir Grúa por WhatsApp
                 </a>
                 <a href="tel:+573122438916" class="btn-official btn-phone">
                     <i class="fa-solid fa-phone-volume"></i> Llamar de Emergencia
@@ -306,15 +312,15 @@
             <div class="features-list">
                 <div class="feature-card">
                     <h4><i class="fa-solid fa-truck-moving" style="color:var(--gruas-blue);"></i> Grúa Planchón 24/7</h4>
-                    <p>Transporte seguro de vehículos livianos y automóviles sin daños.</p>
+                    <p>Transporte seguro de vehículos livianos y automóviles sin daños mecánicos.</p>
                 </div>
                 <div class="feature-card">
                     <h4><i class="fa-solid fa-shield-halved" style="color:#25D366;"></i> Respaldo y Confianza</h4>
-                    <p>Atención inmediata en perímetro urbano y principales vías.</p>
+                    <p>Atención inmediata en perímetro urbano y principales vías de la región.</p>
                 </div>
             </div>
 
-            <!-- Código QR Integrado Abajo -->
+            <!-- Código QR Integrado en Grande Abajo -->
             <div class="qr-section">
                 <div class="qr-wrapper" id="qrcode"></div>
                 <div class="qr-info">
@@ -324,11 +330,9 @@
             </div>
         </div>
 
-        <!-- Crédito Discreto Obligatorio y Marca -->
-        <div class="footer-container">
-            <div class="konfio-footer">
-                Creado por KONFÍO ZINC — Todos los Derechos Reservados[cite: 2]
-            </div>
+        <!-- Pie de Marca Konfío Zinc Fijo y Visible -->
+        <div class="brand-footer">
+            Creado por KONFÍO ZINC — Todos los Derechos Reservados
         </div>
 
     </div>
@@ -341,8 +345,8 @@
             if(qrBox) {
                 new QRCode(qrBox, {
                     text: window.location.href,
-                    width: 68,
-                    height: 68,
+                    width: 85,
+                    height: 85,
                     colorDark : "#0B0F19",
                     colorLight : "#ffffff"
                 });
