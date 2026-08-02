@@ -2,375 +2,705 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="theme-color" content="#0B0F19"/>
-    <title>Grúas gyr Arias - Servicio de Grúa Planchón en Cali | Tarjeta Digital Pro</title>
-
-    <!-- Script de QR dinámico autónomo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Grúas gyr Arias - Servicio de Grúa Planchón 24/7</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- QRCode JS Local -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <!-- FontAwesome para íconos oficiales -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-        :root {
-            --bg-dark: #0B0F19;
-            --surface-card: #151D2A;
-            --gruas-red: #E52E2E;
-            --gruas-blue: #1E88B5;
-            --text-primary: #F8FAFC;
-            --text-secondary: #94A3B8;
-            --border-subtle: rgba(255, 255, 255, 0.08);
-            --brand-whatsapp: #25D366;
-            --brand-phone: #1E88B5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            user-select: none;
-        }
-
+        /* RESET & GENERAL STYLES */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             min-height: 100vh;
-            padding: 10px;
+            color: #f8fafc;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Chasis Fijo Móvil con Tamaño Completo Original y Scroll Suave Integrado */
+        /* MAIN CARD CONTAINER */
         .card-container {
             width: 100%;
-            max-width: 380px;
-            height: 100vh;
-            max-height: 780px;
-            background: var(--surface-card);
-            border-radius: 28px;
-            border: 1px solid var(--border-subtle);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(30, 136, 181, 0.2);
-            overflow: hidden;
+            max-width: 400px;
+            background-color: #151d2a;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 25px rgba(30, 136, 181, 0.2);
             position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Contenedor con Scroll para todo el contenido interior, garantizando visibilidad del pie de página */
-        .card-scroll-wrapper {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 20px 16px;
+        @media (min-width: 450px) {
+            .card-container {
+                border-radius: 24px;
+                min-height: auto;
+                margin: 2rem 0;
+            }
+        }
+
+        /* HEADER IMAGE BANNER (GRÚA PLANCHÓN) */
+        .main-bg {
+            background-image: url('https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=1200&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 200px;
+            width: 100%;
+            position: relative;
+        }
+        .main-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0.2), rgba(21, 29, 42, 0.8));
+        }
+
+        /* CONTENT SECTION WITH CURVE */
+        .content-section {
+            background: #151d2a;
+            margin-top: -50px;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            position: relative;
+            padding: 0 1.5rem 2rem 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-align: center;
+            flex-grow: 1;
         }
-        .card-scroll-wrapper::-webkit-scrollbar { width: 4px; }
-        .card-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(30, 136, 181, 0.4); border-radius: 4px; }
 
-        /* Contenedor del Logotipo Grande y Elegante */
-        .logo-container {
-            width: 95px;
-            height: 95px;
-            margin: 0 auto 10px;
-            background: #FFFFFF;
-            border-radius: 50%;
-            padding: 6px;
+        /* PROFILE PHOTO / LOGO BADGE */
+        .profile-container {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin-top: -80px;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 9999px;
+            border: 4px solid #e52e2e;
+            object-fit: cover;
+            background-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(229, 46, 46, 0.4);
+        }
+
+        .verification-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background-color: #25d366;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--gruas-red);
-            box-shadow: 0 0 18px rgba(229, 46, 46, 0.5);
-            flex-shrink: 0;
-            color: var(--gruas-blue);
-            font-size: 38px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
+        /* TYPOGRAPHY */
         .brand-title {
-            font-size: 21px;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 0.5px;
+            color: #ffffff;
+            margin-top: 0.75rem;
+            letter-spacing: -0.02em;
         }
 
         .brand-subtitle {
-            font-size: 11.5px;
-            color: var(--gruas-blue);
+            font-size: 0.95rem;
+            color: #1e88b5;
             font-weight: 600;
-            margin-top: 2px;
             text-transform: uppercase;
+            margin-top: 0.15rem;
         }
 
-        .brand-tagline {
-            font-size: 10px;
-            color: var(--text-secondary);
-            margin-top: 4px;
-            margin-bottom: 12px;
-            line-height: 1.3;
-            max-width: 320px;
+        .brand-desc {
+            color: #94a3b8;
+            margin-top: 0.5rem;
+            font-size: 0.825rem;
+            max-width: 22rem;
+            line-height: 1.4;
         }
 
         .location-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(30, 136, 181, 0.12);
-            border: 1px solid rgba(30, 136, 181, 0.3);
-            color: #38BDF8;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
+            gap: 0.35rem;
+            background: rgba(30, 136, 181, 0.15);
+            border: 1px solid rgba(30, 136, 181, 0.4);
+            color: #38bdf8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
             font-weight: 500;
-            margin-bottom: 16px;
+            margin-top: 0.75rem;
         }
 
-        /* Botones Principales de Acción Originales y Grandes */
-        .action-grid {
+        /* MAIN ACTION BUTTONS (EMERGENCIA) */
+        .main-buttons-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0.75rem;
             width: 100%;
-            margin-bottom: 16px;
+            max-width: 22rem;
+            margin-top: 1.25rem;
         }
 
-        .btn-official {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
+        .action-btn-whatsapp {
+            background-color: #25d366;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            color: #FFFFFF;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+            gap: 0.5rem;
+            font-weight: 700;
+            padding: 0.85rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.95rem;
+            text-decoration: none;
             border: none;
-            cursor: pointer;
+            font-family: inherit;
+            animation: pulseWhatsApp 2s infinite ease-in-out;
         }
-
-        .btn-whatsapp { background-color: var(--brand-whatsapp); animation: pulseWhatsApp 2s infinite ease-in-out; }
-        .btn-whatsapp:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
         @keyframes pulseWhatsApp {
             0%, 100% { box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); }
             50% { box-shadow: 0 4px 22px rgba(37, 211, 102, 0.6); }
         }
 
-        .btn-phone { background-color: var(--brand-phone); }
-        .btn-phone:hover { filter: brightness(1.1); transform: translateY(-2px); }
-
-        .btn-vcard { background-color: #334155; }
-        .btn-vcard:hover { filter: brightness(1.1); transform: translateY(-2px); }
-
-        /* Servicios Destacados Originales */
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            text-align: left;
-            width: 100%;
-            margin-bottom: 16px;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-subtle);
-            border-left: 4px solid var(--gruas-blue);
-            border-radius: 10px;
-            padding: 10px 12px;
-        }
-
-        .feature-card h4 {
-            font-size: 12px;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .feature-card p {
-            font-size: 10.5px;
-            color: var(--text-secondary);
-            line-height: 1.4;
-        }
-
-        /* Código QR en Grande Abajo con su contenedor original */
-        .qr-section {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border-subtle);
-            border-radius: 16px;
-            padding: 12px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 10px;
-        }
-
-        .qr-wrapper {
-            background: #FFFFFF;
-            padding: 8px;
-            border-radius: 10px;
+        .action-btn-phone {
+            background-color: #1e88b5;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 136, 181, 0.3);
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .qr-info {
-            text-align: left;
-        }
-
-        .qr-info h5 {
-            font-size: 12px;
-            color: var(--text-primary);
+            gap: 0.5rem;
             font-weight: 700;
+            padding: 0.85rem 1rem;
+            border-radius: 0.75rem;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: none;
+            font-family: inherit;
         }
 
-        .qr-info p {
-            font-size: 10px;
-            color: var(--text-secondary);
-            line-height: 1.3;
-            margin-top: 3px;
+        .action-btn-whatsapp:hover, .action-btn-phone:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
         }
 
-        /* Pie de Marca Fijo y Visible Garantizado (Konfío Zinc) */
-        .brand-footer {
-            background: #080C14;
-            color: rgba(148, 163, 184, 0.8);
-            font-size: 8.5px;
+        /* GRID INTERACTION BUTTONS */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 22rem;
+            margin-top: 1.25rem;
+        }
+
+        .social-btn {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f8fafc;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 0.25rem;
+            height: 4.8rem;
+            border-radius: 1rem;
+            text-decoration: none;
+            font-family: inherit;
+        }
+
+        .social-btn:hover {
+            background-color: rgba(30, 136, 181, 0.2);
+            border-color: #1e88b5;
+            transform: scale(1.05);
+        }
+
+        .social-btn-label {
+            font-size: 0.68rem;
+            margin-top: 0.4rem;
+            font-weight: 500;
             text-align: center;
-            padding: 10px;
+            line-height: 1.1;
+            color: #94a3b8;
+        }
+
+        /* SVG ICONS INLINE */
+        .svg-icon {
+            width: 1.4rem;
+            height: 1.4rem;
+            fill: currentColor;
+        }
+
+        /* FIRMA BRANDING OBLIGATORIA */
+        .brand-footer {
+            background: #080c14;
+            color: rgba(148, 163, 184, 0.8);
+            font-size: 0.65rem;
+            text-align: center;
+            padding: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.8px;
-            border-top: 1px solid var(--border-subtle);
+            letter-spacing: 0.08em;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             text-transform: uppercase;
-            flex-shrink: 0;
             width: 100%;
         }
 
-        .toast {
+        /* MODALS */
+        .modal-overlay {
             position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: var(--gruas-blue);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 999px;
-            font-size: 12px;
+            inset: 0;
+            background: rgba(11, 15, 25, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
             opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            z-index: 200;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(5px);
+            padding: 1rem;
         }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #151d2a;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid #1e88b5;
+            opacity: 0;
+            overflow: hidden;
+            color: #f8fafc;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .modal-header {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-header-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0 auto;
+        }
+
+        .modal-header-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #e52e2e;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        .modal-body {
+            padding: 1.25rem;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            border-radius: 9999px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close-btn:hover {
+            background-color: #e52e2e;
+            transform: rotate(90deg);
+        }
+
+        /* SERVICES LIST */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.85rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid #1e88b5;
+        }
+
+        .service-img {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 0.5rem;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .service-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .service-desc {
+            font-size: 0.78rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+            line-height: 1.35;
+        }
+
+        /* INSTALL BOXES */
+        .install-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .install-box {
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .install-box-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e88b5;
+            margin-bottom: 0.5rem;
+        }
+
+        .install-box-list {
+            padding-left: 1.2rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
 
     <div class="card-container">
+        <!-- HEADER IMAGE (IMAGEN REAL DE GRÚA DE PLANCHÓN) -->
+        <div class="main-bg">
+            <div class="main-bg-overlay"></div>
+        </div>
         
-        <!-- Wrapper con Scroll Suave para preservar tamaño grande e imponente -->
-        <div class="card-scroll-wrapper">
-            <!-- Icono / Logotipo Representativo -->
-            <div class="logo-container">
-                <i class="fa-solid fa-truck-pickup" style="color: var(--gruas-blue);"></i>
+        <!-- MAIN CONTENT -->
+        <div class="content-section">
+            <!-- ISOTIPO DE GRÚA / BADGE -->
+            <div class="profile-container">
+                <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400&auto=format&fit=crop" 
+                     alt="Grúas gyr Arias Logo" 
+                     class="profile-pic"
+                     onerror="this.onerror=null;this.src='https://placehold.co/130x130/1e88b5/ffffff?text=GYR';">
+                
+                <div class="verification-badge" title="Servicio Verificado">
+                    <svg class="svg-icon" style="width:0.9rem; height:0.9rem;" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </div>
             </div>
-
-            <!-- Títulos del Negocio -->
+            
+            <!-- BRAND TITLE & SUBTITLE -->
             <h1 class="brand-title">Grúas gyr Arias</h1>
-            <div class="brand-subtitle">Servicio de Grúa Planchón</div>
-            <p class="brand-tagline">Asistencia vial rápida, segura y profesional en Cali y sus alrededores.</p>
-
+            <p class="brand-subtitle">Servicio de Grúa Planchón 24/7</p>
+            <p class="brand-desc">Asistencia vial rápida, segura y profesional para todo tipo de vehículos en Cali y Valle del Cauca.</p>
+            
             <div class="location-badge">
-                <i class="fa-solid fa-location-dot" style="color: #38BDF8;"></i> Cali, Valle del Cauca
+                <svg class="svg-icon" style="width:0.85rem; height:0.85rem;" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                Cali, Valle del Cauca
             </div>
 
-            <!-- Botones de Acción Principal -->
-            <div class="action-grid">
-                <a href="https://wa.me/573122438916?text=Hola%20Rubén,%20necesito%20el%20servicio%20urgente%20de%20grúa%20planchón%20en%20Cali." class="btn-official btn-whatsapp" target="_blank">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Pedir Grúa por WhatsApp
+            <!-- MAIN ACTIONS (BOTONES GRANDES DE EMERGENCIA) -->
+            <div class="main-buttons-wrapper">
+                <a href="https://wa.me/573122438916?text=Hola%20Rub%C3%A9n,%20necesito%20el%20servicio%20urgente%20de%20gr%C3%BAa%20planch%C3%B3n%20en%20Cali." target="_blank" class="action-btn-whatsapp">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span>Pedir Grúa por WhatsApp</span>
                 </a>
-                <a href="tel:+573122438916" class="btn-official btn-phone">
-                    <i class="fa-solid fa-phone-volume"></i> Llamar de Emergencia
+                
+                <a href="tel:+573122438916" class="action-btn-phone">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <span>Llamar de Emergencia</span>
                 </a>
-                <button id="btn-vcard" class="btn-official btn-vcard">
-                    <i class="fa-solid fa-address-book"></i> Guardar Contacto Directo
+            </div>
+
+            <!-- GRID INTERMITENTE / INTERACTIVO -->
+            <div class="social-grid">
+                <!-- Servicios -->
+                <button id="services-btn" class="social-btn">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12.5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM17 12V9.5h2.5l1.96 2.5H17z"/></svg>
+                    <span class="social-btn-label">Servicios</span>
+                </button>
+
+                <!-- Horario 24/7 -->
+                <button id="horario-btn" class="social-btn">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                    <span class="social-btn-label">Horario</span>
+                </button>
+
+                <!-- Código QR -->
+                <button id="qr-code-btn" class="social-btn">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 3h8v8H3zm2 2v4h4V5zm8-2h8v8h-8zm2 2v4h4V5zM3 13h8v8H3zm2 2v4h4v-4zm13-2h3v2h-3zm-3 3h2v3h-2zm3 0h3v5h-3zm-3 3h2v2h-2z"/></svg>
+                    <span class="social-btn-label">Código QR</span>
+                </button>
+
+                <!-- Ubicación -->
+                <a href="https://maps.google.com/?q=Cali,+Colombia" target="_blank" class="social-btn">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span class="social-btn-label">Ubicación</span>
+                </a>
+
+                <!-- Instalar -->
+                <button id="install-btn" class="social-btn">
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                    <span class="social-btn-label">Instalar App</span>
+                </button>
+
+                <!-- Guardar Contacto -->
+                <button id="save-contact-btn" class="social-btn" style="grid-column: span 3;">
+                    <div style="display:flex; align-items:center; gap:0.5rem; color:#38bdf8;">
+                        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+                        <span style="font-size:0.8rem; font-weight:700;">Guardar Contacto Directo (vCard)</span>
+                    </div>
                 </button>
             </div>
-
-            <!-- Servicios Destacados -->
-            <div class="features-list">
-                <div class="feature-card">
-                    <h4><i class="fa-solid fa-truck-moving" style="color:var(--gruas-blue);"></i> Grúa Planchón 24/7</h4>
-                    <p>Transporte seguro de vehículos livianos y automóviles sin daños mecánicos.</p>
-                </div>
-                <div class="feature-card">
-                    <h4><i class="fa-solid fa-shield-halved" style="color:#25D366;"></i> Respaldo y Confianza</h4>
-                    <p>Atención inmediata en perímetro urbano y principales vías de la región.</p>
-                </div>
-            </div>
-
-            <!-- Código QR Integrado en Grande Abajo -->
-            <div class="qr-section">
-                <div class="qr-wrapper" id="qrcode"></div>
-                <div class="qr-info">
-                    <h5>Escanea para Guardar</h5>
-                    <p>Apunta tu cámara para tener la grúa a la mano en cualquier emergencia vial.</p>
-                </div>
-            </div>
         </div>
-
-        <!-- Pie de Marca Konfío Zinc Fijo y Visible -->
+        
+        <!-- FOOTER BRANDING OBLIGATORIO -->
         <div class="brand-footer">
             Creado por KONFÍO ZINC — Todos los Derechos Reservados
         </div>
-
     </div>
 
-    <div class="toast" id="toast"></div>
+    <!-- MODALS -->
 
+    <!-- Modal 1: Servicios de Grúa Planchón -->
+    <div id="services-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-header-title">Nuestros Servicios</h2>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="service-grid">
+                    <div class="service-item">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?q=80&w=250&auto=format&fit=crop" alt="Grúa Planchón" class="service-img">
+                        <div>
+                            <h3 class="service-title">Grúa Planchón Hydraulica</h3>
+                            <p class="service-desc">Transporte seguro sin contacto mecánico ni riesgos para automóviles livianos, deportivos y SUVs.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=250&auto=format&fit=crop" alt="Asistencia Vial" class="service-img">
+                        <div>
+                            <h3 class="service-title">Asistencia en Carretera 24/7</h3>
+                            <p class="service-desc">Atención oportuna en caso de varadas, accidentes o traslado programado de vehículos.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=250&auto=format&fit=crop" alt="Cobertura" class="service-img">
+                        <div>
+                            <h3 class="service-title">Cobertura Urbano e Intermunicipal</h3>
+                            <p class="service-desc">Servicio garantizado dentro de Cali, Palmira, Jamundí, Yumbo y vías principales del departamento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Horario de Atención -->
+    <div id="horario-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 380px;">
+            <div class="modal-header">
+                <h2 class="modal-header-title">Disponibilidad 24/7</h2>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div style="line-height: 2; font-size: 0.95rem; color: #f8fafc;">
+                    <p style="color: #25d366; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">¡Servicio Continuo e Ininterrumpido!</p>
+                    <p style="color: #94a3b8; font-size: 0.85rem;">Atendemos emergencias de día, de noche y festivos en toda la zona urbana y corredores viales.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Código QR -->
+    <div id="qr-code-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 360px; text-align: center;">
+            <div class="modal-header">
+                <h2 class="modal-header-title">Escanea para Guardar</h2>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color: #94a3b8; font-size: 0.825rem; margin-bottom: 1rem;">Ten siempre a mano el contacto de la grúa en tu teléfono para cualquier eventualidad.</p>
+                <div style="display: flex; justify-content: center; padding: 0.5rem; background: white; border-radius: 0.5rem; border: 1px solid #1e88b5; width: fit-content; margin: 0 auto;">
+                    <div id="qrcode-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Instalación -->
+    <div id="install-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-header-title">Instala en tu Celular</h2>
+                <button class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="install-flex">
+                    <div class="install-box">
+                        <div class="install-box-title">En iPhone (iOS)</div>
+                        <ol class="install-box-list">
+                            <li>Abre esta tarjeta en <strong>Safari</strong>.</li>
+                            <li>Toca el botón <strong>Compartir</strong> (cuadro con flecha hacia arriba).</li>
+                            <li>Toca en <strong>"Agregar a inicio"</strong>.</li>
+                        </ol>
+                    </div>
+                    <div class="install-box">
+                        <div class="install-box-title">En Android</div>
+                        <ol class="install-box-list">
+                            <li>Abre esta tarjeta en <strong>Chrome</strong>.</li>
+                            <li>Toca los <strong>tres puntos</strong> superiores.</li>
+                            <li>Selecciona <strong>"Agregar a la pantalla principal"</strong>.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC VANILLA JS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const qrBox = document.getElementById("qrcode");
-            if(qrBox) {
+            // Manejador Genérico de Modales
+            const bindModal = (triggerId, modalId) => {
+                const trigger = document.getElementById(triggerId);
+                const modal = document.getElementById(modalId);
+                if (!trigger || !modal) return;
+
+                const open = () => modal.classList.add('active');
+                const close = () => modal.classList.remove('active');
+
+                trigger.addEventListener('click', open);
+                
+                const closeBtn = modal.querySelector('.modal-close-btn');
+                if (closeBtn) closeBtn.addEventListener('click', close);
+
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) close();
+                });
+            };
+
+            bindModal('services-btn', 'services-modal');
+            bindModal('horario-btn', 'horario-modal');
+            bindModal('install-btn', 'install-modal');
+            bindModal('qr-code-btn', 'qr-code-modal');
+
+            // Generador QR Local
+            const qrBox = document.getElementById('qrcode-box');
+            if (qrBox) {
                 new QRCode(qrBox, {
                     text: window.location.href,
-                    width: 85,
-                    height: 85,
-                    colorDark : "#0B0F19",
-                    colorLight : "#ffffff"
+                    width: 150,
+                    height: 150,
+                    colorDark: "#0b0f19",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
                 });
             }
 
-            const toast = document.getElementById('toast');
-            const showToast = (msg) => {
-                toast.textContent = msg;
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2200);
-            };
+            // Guardar Contacto (vCard Nativa para Rubén Darío Arias Suárez)
+            const saveContactBtn = document.getElementById('save-contact-btn');
+            if (saveContactBtn) {
+                saveContactBtn.addEventListener('click', () => {
+                    const vCard = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:Ruben Dario Arias Suarez
+ORG:Gruas gyr Arias
+TITLE:Servicio de Grua Planchon 24/7
+TEL;TYPE=WORK,VOICE:+573122438916
+EMAIL:contacto@gruasgyr.com
+ADR;TYPE=WORK:;;Cali;Valle del Cauca;;Colombia
+URL:${window.location.href}
+NOTE:Asistencia vial urgente y servicio de grua planchon en Cali y alrededores.
+END:VCARD`;
 
-            // Generador de vCard Nativo para Rubén Darío Arias Suárez
-            document.getElementById('btn-vcard').addEventListener('click', () => {
-                const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Ruben Dario Arias Suarez\nORG:Gruas gyr Arias\nTITLE:Servicio de Grua Planchon\nTEL;TYPE=CELL:+573122438916\nNOTE:Asistencia vial, grua planchon en Cali y alrededores.\nURL:${window.location.href}\nEND:VCARD`;
-                const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Gruas_gyr_Arias.vcf';
-                a.click();
-                URL.revokeObjectURL(url);
-                showToast('Contacto guardado en agenda');
-            });
+                    const blob = new Blob([vCard], { type: 'text/vcard;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Gruas_gyr_Arias.vcf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                });
+            }
         });
     </script>
 </body>
